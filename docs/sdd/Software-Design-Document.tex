@@ -1,0 +1,64 @@
+\documentclass[letterpaper]{article}
+\usepackage{tempora}
+
+\begin{document}
+\title{\textbf{hashscript}: hash for use in written text}
+\author{
+Korey Hinton
+\and
+Kasey Hinton
+}
+\date{October 2022}
+
+\maketitle
+
+\newpage
+
+\section*{Copyright restrictions}
+\textbf{Copyright 2022 Korey Hinton and Kasey Hinton. \\ All Rights Reserved.}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Abstract}
+%\input{file.tex}
+The word hashscript can refer to the textual notation
+that represents textual transform to embed numeric hash digits,
+and the word hashscript can also refer to the name
+of the JavaScript library containing such a
+textual transform implementation.
+
+A series of numbers appearing in a segment of text,
+if written in a way that the chosen number would not
+change the meaning outside the text segment,
+could store parts of a numeric version of a hash.
+Each hash digit would need to be greater than or equal to two to use
+with plural nouns.
+
+\section{hashscript Notation}
+
+The hashscript
+notation represents numbers with placeholders
+to use as dynamic text that gets replaced
+with numeric hash digits. The dynamic form
+uses a variable syntax (i.e., ``\$A'') before hashing
+the text segment. After hashing, each variable
+placeholder gets replaced with the corresponding hash
+digit number (i.e., ``\$A -> 6''; \$B -> 9'').
+
+An example text segment in hashscript notation
+could be \textit{``The team spotted \$A dolphins, \$B orcas,
+and \$C jellyfish.''}
+
+\section{hashscript Hash Format}
+
+The format of the hashscript hash would be space-separated
+numeric hash digits, i.e., \begin{verbatim}6 10 11 9 4 3 10 10 2 8 11 5 4\end{verbatim}
+
+\section{hashscript Implementation (JavaScript library)}
+
+
+\end{document}

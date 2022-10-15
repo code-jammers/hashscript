@@ -1,0 +1,9 @@
+# Emacs autosave files
+\#*\#
+.\#*
+*~
+
+# TeX debug files
+*.aux
+*.log
+*.toc
