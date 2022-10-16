@@ -1,17 +1,17 @@
 import crypto from "crypto";
 
 const hash = {
-  setHmac: function (hmac) {
-    hash.secret = hmac;
+  setHmacKey: function (key) {
+    hash.key = key;
   },
   hash: function (hd, t) {
-    if (hash.secret == null) {
+    if (hash.key == null) {
       console.warn(
         "WARNING: no hmac given to setHmac function, using empty string."
       );
     }
     return crypto
-      .createHmac("sha256", hash?.secret ?? "")
+      .createHmac("sha256", hash?.key ?? "")
       .update(hd + t)
       .digest("hex");
   },
