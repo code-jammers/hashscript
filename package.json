@@ -1,0 +1,26 @@
+{
+  "name": "hashscript",
+  "version": "0.0.1",
+  "description": "hash for use in written text",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "npm test",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-jammers/hashscript.git"
+  },
+  "author": "Korey Hinton, Kasey Hinton",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/code-jammers/hashscript/issues"
+  },
+  "homepage": "https://github.com/code-jammers/hashscript#readme",
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
