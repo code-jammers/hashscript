@@ -21,3 +21,13 @@ dist-ssr
 *.aux
 *.log
 *.toc
+
+# TeX bashful files
+docs/sdd/*.sh
+*.exitCode
+*.stderr
+*.stdout
+
+# js2tex files
+*.js.tex
+
