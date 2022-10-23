@@ -98,6 +98,20 @@ numeric hash digits, i.e., \begin{verbatim}6 10 11 9 4 3 10 10 2 8 11 5 4\end{ve
 
 
 \bash[stdout]
+../js2tex digest
+\END
+\begin{codebox}[label={myautocounter}]{black}{\texttt{\scriptsize digest}}
+
+\begin{singlespace}
+   
+{\fontsize{5}{12} \selectfont %\selectfont
+\texttt{
+  \input{../../src/digest.js.tex}}}\end{singlespace}\end{codebox}%"
+
+
+
+
+\bash[stdout]
 ../js2tex getHashDigit
 \END
 \begin{codebox}[label={myautocounter}]{black}{\texttt{\scriptsize getHashDigit}}
@@ -106,12 +120,13 @@ numeric hash digits, i.e., \begin{verbatim}6 10 11 9 4 3 10 10 2 8 11 5 4\end{ve
   
 {\fontsize{5}{12} \selectfont %\selectfont
 \texttt{
-  \input{../../getHashDigit.js.tex}}}\end{singlespace}\end{codebox}%"
+  \input{../../src/getHashDigit.js.tex}}}\end{singlespace}\end{codebox}%"
 
 
 % Clean-up temp files
 \bash[stdout]
-rm ../../getHashDigit.js.tex
+rm ../../src/getHashDigit.js.tex
+# rm ../../src/digest.js.tex
 \END
 
 \end{document}
