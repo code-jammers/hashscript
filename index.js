@@ -1,3 +1,3 @@
-import hash from './src/hash';
+import hash from "./src/hash";
 
 export default hash;

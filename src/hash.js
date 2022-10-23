@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import { digest } from "./digest.js";
 
 const hash = {
   setHmacKey: function (key) {
@@ -10,10 +10,7 @@ const hash = {
         "WARNING: no hmac given to setHmac function, using empty string."
       );
     }
-    return crypto
-      .createHmac("sha256", hash?.key ?? "")
-      .update(head + text)
-      .digest("hex");
+    return digest(hash?.key ?? "", head + text);
   },
   hashToInt: function (head, text, digits) {
     // why was 13 chosen?

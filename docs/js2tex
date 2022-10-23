@@ -12,7 +12,7 @@ fi
 # pwd
 
 # general js 2 tex
-cat ../${name}.js  \
+cat ../src/${name}.js  \
     | sed 's/\$/\\$/g' \
     | sed "s/' /\\\textquotesingle\\\ /g" \
     | sed "s/'/\\\textquotesingle/g" \
@@ -24,14 +24,16 @@ cat ../${name}.js  \
     | sed -z 's/\n/\\newline /g' \
     | sed 's/  /\\\phantom{AB}/g' \
     | sed 's/export/\\textcolor{brcol}{export}/g' \
+    | sed 's/import/\\textcolor{brcol}{import}/g' \
     | sed 's/return/\\textcolor{brcol}{return}/g' \
+    | sed 's/from/\\textcolor{brcol}{from}/g' \
     | sed "s/${name}/\\\textcolor{ltcol}{${name}}/g" \
-    | sed 's/charAt/\\textcolor{ltcol}{charAt}/g' \
-    | sed 's/charCodeAt/\\textcolor{ltcol}{charCodeAt}/g' \
-    | sed 's/split/\\textcolor{ltcol}{split}/g' \
-	  >../.temp1.js.tex
+	  >../src/.temp1.js.tex
 
-#     | sed "s/\\$/\\\$/g" \
+# | sed "s/\\$/\\\$/g" \
+# | sed 's/split/\\textcolor{ltcol}{split}/g' \
+# | sed 's/charAt/\\textcolor{ltcol}{charAt}/g' \
+# | sed 's/charCodeAt/\\textcolor{ltcol}{charCodeAt}/g' \
 # | sed 's/'${name}'/\\textcolor{ltcol}{'${name}'}/g' \
 # | sed 's/'${name}'/'$'\\\\''textcolor{ltcol}{'${name}'}/g' \
 # | sed 's/charAt/'$'\\\\''textcolor{ltcol}{charAt}/g' \
@@ -46,13 +48,14 @@ cat ../${name}.js  \
 # | sed 's/  /'$'\\\\''newline '$'\\\\''hspace*{5pt}/g' \
 
 # project-specific js 2 tex (getHashDigit)
-cat ../.temp1.js.tex \
+cat ../src/.temp1.js.tex \
     | sed 's/hash/\\textcolor{lblue}{hash}/g' \
     | sed 's/index/\\textcolor{lblue}{index}/g' \
     | sed 's/varLetter/\\textcolor{lblue}{varLetter}/g' \
     | sed 's/placeholder/\\textcolor{lblue}{placeholder}/g' \
+    | python3 js2texreg.py \
     | sed 's/function/\\textcolor{dblue}{function}/g' \
-	  >../.temp2.js.tex
+	  >../src/.temp2.js.tex
 
 # | sed 's/hash/'$'\\\\''textcolor{lblue}{hash}/g' \
 # | sed 's/index/'$'\\\\''textcolor{lblue}{index}/g' \
@@ -61,22 +64,22 @@ cat ../.temp1.js.tex \
 # | sed 's/function/'$'\\\\''textcolor{dblue}{function}/g' \
 
 # general js 2 tex
-cat ../.temp2.js.tex \
+cat ../src/.temp2.js.tex \
     | sed 's/var /\\textcolor{dblue}{var }/g' \
     | sed 's/\_/\\\_/g' \
     | sed "s/'//g" \
-	  >../.temp3.js.tex
+	  >../src/.temp3.js.tex
 
-latex=`cat ../.temp3.js.tex`
+latex=`cat ../src/.temp3.js.tex`
 latex="${latex::-9}"  # removes trailing '\newline '
-echo "$latex" >../${name}.js.tex
+echo "$latex" >../src/${name}.js.tex
 
 #     | sed "s/\\$/\\\$/g"  \
 
 # | sed 's/var /'$'\\\\''textcolor{dblue}{var }/g' \
 
-rm ../.temp1.js.tex
-rm ../.temp2.js.tex
-rm ../.temp3.js.tex
+rm ../src/.temp1.js.tex
+rm ../src/.temp2.js.tex
+rm ../src/.temp3.js.tex
 
 # cat ../../getHashDigit.js  | sed 's/{/\\\{/g' | sed 's/}/\\\}/g' | sed 's/  /'$'\\\\''newline '$'\\\\''hspace*{5pt}/g' | sed 's/export/'$'\\\\''textcolor{brcol}{export}/g' | sed 's/getHashDigit/'$'\\\\''textcolor{ltcol}{getHashDigit}/g' | sed 's/charAt/'$'\\\\''textcolor{ltcol}{charAt}/g' | sed 's/charCodeAt/'$'\\\\''textcolor{ltcol}{charCodeAt}/g' | sed 's/split/'$'\\\\''textcolor{ltcol}{split}/g' | sed 's/hash/'$'\\\\''textcolor{lblue}{hash}/g' | sed 's/index/'$'\\\\''textcolor{lblue}{index}/g' | sed 's/varLetter/'$'\\\\''textcolor{lblue}{varLetter}/g' | sed 's/placeholder/'$'\\\\''textcolor{lblue}{placeholder}/g'  | sed 's/function/'$'\\\\''textcolor{dblue}{function}/g' | sed 's/var /'$'\\\\''textcolor{dblue}{var }/g' | sed 's/\_/-/g' | sed "s/'//g" | sed "s/\\$//g"  >../../getHashDigit.js.tex
