@@ -1,5 +1,41 @@
-\documentclass[letterpaper]{article}
+\documentclass[letterpaper,twocolumn]{article}%scrartcl}
+
 \usepackage{tempora}
+\usepackage{bashful}
+\pagestyle{empty}
+
+\usepackage{setspace} %
+
+\usepackage{xcolor}
+\definecolor{dblue}{RGB}{74,149,210} % dark/deep blue
+\definecolor{darbg}{RGB}{30,30,30} % dark background
+\definecolor{sedbg}{RGB}{37,37,38} %semi-dark background
+\definecolor{brcol}{RGB}{173,117,194} %bright color
+\definecolor{ltcol}{RGB}{222,221,170} %light color
+\definecolor{txcol}{RGB}{105,139,62} %text color
+\definecolor{lblue}{RGB}{141,212,246} % light blue
+\definecolor{lbcol}{RGB}{247,196,9} % light/bright color
+\definecolor{tlcol}{RGB}{251,251,247} % title color
+
+\usepackage{textcomp}  % for single quotes: \textquotesingle
+
+% code color box configuration
+\usepackage{tcolorbox}
+\newtcolorbox[auto counter,number within=section]{codebox}[3][]
+{
+    left = 1pt,
+    right = 1pt,
+    colframe = {sedbg},%#2!25,
+    colback = {darbg},%#2!10,
+    colupper = {txcol},
+    coltitle = {tlcol},%#2!20!black,
+    title = \texttt{\scriptsize Excerpt~\thetcbcounter: {#3}},
+    #1,
+}
+\AtBeginEnvironment{tcolorbox}{\tiny}
+
+\newcommand{\code}[1]{
+}
 
 \begin{document}
 \title{\textbf{hashscript}: hash for use in written text}
@@ -12,16 +48,16 @@ Kasey Hinton
 
 \maketitle
 
-\newpage
+\clearpage
 
 \section*{Copyright restrictions}
 \textbf{Copyright 2022 Korey Hinton and Kasey Hinton. \\ All Rights Reserved.}
 
-\newpage
+\clearpage
 
-\tableofcontents
+\tableofcontents 
 
-\newpage
+\clearpage
 
 \section{Abstract}
 %\input{file.tex}
@@ -54,11 +90,28 @@ could be \textit{``The team spotted \$A dolphins, \$B orcas,
 and \$C jellyfish.''}
 
 \section{hashscript Hash Format}
-
+ 
 The format of the hashscript hash would be space-separated
 numeric hash digits, i.e., \begin{verbatim}6 10 11 9 4 3 10 10 2 8 11 5 4\end{verbatim}
 
-\section{hashscript Implementation (JavaScript library)}
+\section{JS Library Implementation}
 
+
+\bash[stdout]
+../js2tex getHashDigit
+\END
+\begin{codebox}[label={myautocounter}]{black}{\texttt{\scriptsize getHashDigit}}
+
+\begin{singlespace}
+  
+{\fontsize{5}{12} \selectfont %\selectfont
+\texttt{
+  \input{../../getHashDigit.js.tex}}}\end{singlespace}\end{codebox}%"
+
+
+% Clean-up temp files
+\bash[stdout]
+rm ../../getHashDigit.js.tex
+\END
 
 \end{document}
