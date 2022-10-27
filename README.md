@@ -9,7 +9,6 @@ todo: break out into a js file instead of writing escaped js into the shell
 ```sh
 secret="CaptainJackSparrow"
 vartext="First, I counted to \$A, then \$B, and then \$C."
-text="First, I counted to 10, then 8, and then 3."
 
 hash=$( \
 {
