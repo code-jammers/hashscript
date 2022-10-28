@@ -3,8 +3,6 @@ A hash for use in written text. Read [Software Design Document](docs/sdd/Softwar
 
 ## command line examples
 
-todo: break out into a js file instead of writing escaped js into the shell
-
 ### command line example - hash notation
 ```sh
 secret='CaptainJackSparrow'
