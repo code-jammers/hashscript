@@ -7,79 +7,25 @@ todo: break out into a js file instead of writing escaped js into the shell
 
 ### command line example - hash notation
 ```sh
-secret="CaptainJackSparrow"
-vartext="First, I counted to \$A, then \$B, and then \$C."
-text="First, I counted to 10, then 8, and then 3."
+secret='CaptainJackSparrow'
+message='First, I counted to $A, then $B, and then $C.'
 
-hash=$( \
-{
-    echo import\(\'./src/hash.js\'\).then\(hm\ =\>\ \{\
-        console.log\(hm.default.hashInferPluralDigitCsv\(\'\{"${secret}"\}\',\'"${vartext}"\'\)\)\;\ \
-    \}\)\;;
+# display script with dynamic vars
+src/hashscript-cli.js script-vars "{$secret}$message"
 
-} | node \
-)
-h1=$(echo "$hash" | cut -d ',' -f1)
-h2=$(echo "$hash" | cut -d ',' -f2)
-h3=$(echo "$hash" | cut -d ',' -f3)
+# hash it
+hash=$(src/hashscript-cli.js hash "{$secret}$message" 2>>/dev/null)
+echo "$hash"
 
-echo "(hash = "$(echo "$hash" | sed 's/,/ /g')")"
-
-{
-    echo import\(\'./src/roundTrip.js\'\).then\(rtm\ =\>\ \{\
-        console.log\(rtm.roundTrip\(\'\{"${secret}"\}"${vartext}"\',\ \'${h1}\ ${h2}\ ${h3}\',\ false\)\)\;\ \
-    \}\)\;;
-} | node | cut -d '}' -f2
-```
-
-```
-WARNING: no hmac given to setHmac function, using empty string.
-(hash = 4 2 10)
-First, I counted to 4, then 2, and then 10.
-```
-
-### command-line example - without hash notation
-
-```sh
-secret="CaptainJackSparrow"
-text="First, I counted to 10, then 8, and then 3."
-
-h1=4
-h2=2
-h3=10
-
-{
-    echo import\(\'./src/roundTrip.js\'\).then\(rtm\ =\>\ \{\
-        console.log\(rtm.roundTrip\(\'\{"${secret}"\}"${text}"\',\ \'${h1}\ ${h2}\ ${h3}\',\ false\)\)\;\ \
-    \}\)\;;
-} | node | cut -d '}' -f2
-```
-
-```
-First, I counted to 4, then 2, and then 10.
-```
-
-### command-line example - reset to hash notation
-
-```sh
-secret="CaptainJackSparrow"
-text="First, I counted to 10, then 8, and then 3."
-
-h1=4
-h2=2
-h3=10
-
-{
-    echo import\(\'./src/roundTrip.js\'\).then\(rtm\ =\>\ \{\
-        console.log\(rtm.roundTrip\(\'\{"${secret}"\}"${text}"\',\ \'${h1}\ ${h2}\ ${h3}\',\ true\)\)\;\ \
-    \}\)\;;
-} | node | cut -d '}' -f2
+# display script with encoded digits
+src/hashscript-cli.js script-nums -h "$hash" "{$secret}$message"
 ```
 
 ```
 First, I counted to $A, then $B, and then $C.
+4 2 10
+First, I counted to 4, then 2, and then 10.
 ```
-
 
 ## generate SDD
 ```sh
