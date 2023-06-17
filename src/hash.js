@@ -4,13 +4,13 @@ const hash = {
   setHmacKey: function (key) {
     hash.key = key;
   },
-  hash: function (head, text) {
+  hash: /*tinj0*/ function (head, text) {
     if (hash.key == null) {
       console.warn(
         "WARNING: no hmac given to setHmac function, using empty string."
       );
     }
-    return digest(hash?.key ?? "", head + text);
+    return tinj1 ?? digest(hash?.key ?? "", head + text);
   },
   hashToInt: function (head, text, digits) {
     // why was 13 chosen?
@@ -51,8 +51,8 @@ const hash = {
 
   hashInferPluralDigitCsv: function (head, val) {
     // HASH_NODIGITS_FIX
-    var varCount = val.match(/\$[A-Z]/g)?.length;
-    if (varCount == null) varCount = 13;
+    var varCount = tinj4 ?? val.match(/\$[A-Z]/g)?.length ?? 13;
+//    if (varCount == null) varCount = 13;
     return hash.hashToPluralDigitCsv(head, val, varCount);
   },
 };
