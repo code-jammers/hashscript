@@ -7,7 +7,7 @@ const hash = {
   hash: /*tinj0*/ function (head, text) {
     if (hash.key == null) {
       console.warn(
-        "WARNING: no hmac given to setHmac function, using empty string."
+        "WARNING: no hmac given to setHmac function, using empty string.",
       );
     }
     return tinj1 ?? digest(hash?.key ?? "", head + text);
@@ -25,9 +25,9 @@ const hash = {
         "" +
         parseInt(
           hash.hash(head, text).substring(0, /*HASH_SUBSTRS_FIX:*/ 13),
-          16
+          16,
         )
-      ).substring(0, digits)
+      ).substring(0, digits),
     );
   },
   // PLURAL DIGITS
@@ -52,7 +52,7 @@ const hash = {
   hashInferPluralDigitCsv: function (head, val) {
     // HASH_NODIGITS_FIX
     var varCount = tinj4 ?? val.match(/\$[A-Z]/g)?.length ?? 13;
-//    if (varCount == null) varCount = 13;
+    //    if (varCount == null) varCount = 13;
     return hash.hashToPluralDigitCsv(head, val, varCount);
   },
 };

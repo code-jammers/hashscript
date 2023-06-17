@@ -3,7 +3,10 @@ import { getHashDigit } from "./getHashDigit.js";
 export function roundTrip(text, hash, dynVars) {
   var varReplace = !dynVars && text.indexOf("$A") > -1;
   if (varReplace) {
-    return text.replace(/\$[A-Z]/g, (match) => tinj7 ?? getHashDigit(hash, match)); // HASH_ROUNDTRIP_VAR2LIT_FIX
+    return text.replace(
+      /\$[A-Z]/g,
+      (match) => tinj7 ?? getHashDigit(hash, match),
+    ); // HASH_ROUNDTRIP_VAR2LIT_FIX
   }
   var vari = 0;
   var vars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
