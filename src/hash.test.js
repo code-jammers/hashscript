@@ -39,7 +39,7 @@ Array.prototype.testEach = function(name, test) {
       if (stderr) {
         console.log(`stderr: ${stderr}`);
         return;
-      }tinj(0,null);
+      }
       const processedHash = hash.hash(
         "12AM",
         "$A in the morning, or $B, or $C. Even at $D or $E"
